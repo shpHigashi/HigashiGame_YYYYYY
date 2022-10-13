@@ -108,19 +108,19 @@ void SceneMain::HitCheck()
 {
 	for (auto& EnemyLeft : m_EnemyLeft)
 	{
-		if (EnemyLeft.getRight() <= m_player.getLeft()) continue;
-		if (m_player.getRight() <= EnemyLeft.getLeft()) continue;
-		if (EnemyLeft.getBottom() <= m_player.getTop()) continue;
-		if (m_player.getBottom() <= EnemyLeft.getTop()) continue;
+		if (EnemyLeft.getRight() < m_player.getLeft()) continue;
+		if (m_player.getRight() < EnemyLeft.getLeft()) continue;
+		if (EnemyLeft.getBottom() < m_player.getTop()) continue;
+		if (m_player.getBottom() < EnemyLeft.getTop()) continue;
 		m_player.isDead();
 	}
 
 	for (auto& EnemyRight : m_EnemyRight)
 	{
-		if (EnemyRight.getRight() <= m_player.getLeft()) continue;
-		if (m_player.getRight() <= EnemyRight.getLeft()) continue;
-		if (EnemyRight.getBottom() <= m_player.getTop()) continue;
-		if (m_player.getBottom() <= EnemyRight.getTop()) continue;
+		if (EnemyRight.getRight() < m_player.getLeft()) continue;
+		if (m_player.getRight() < EnemyRight.getLeft()) continue;
+		if (EnemyRight.getBottom() < m_player.getTop()) continue;
+		if (m_player.getBottom() < EnemyRight.getTop()) continue;
 		m_player.isDead();
 	}
 }

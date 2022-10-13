@@ -156,7 +156,9 @@
     <ClCompile Include="EnemyRight.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="SceneBase.cpp" />
     <ClCompile Include="SceneMain.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SceneTitle.cpp" />
     <ClCompile Include="Vec2.cpp" />
   </ItemGroup>
@@ -166,7 +168,9 @@
     <ClInclude Include="EnemyRight.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="SceneBase.h" />
     <ClInclude Include="SceneMain.h" />
+    <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneTitle.h" />
     <ClInclude Include="Vec2.h" />
   </ItemGroup>

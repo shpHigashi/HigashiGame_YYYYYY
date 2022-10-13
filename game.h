@@ -12,8 +12,8 @@ namespace Game
 	constexpr int kScreenInterval = 10;
 
 	// ゲームのステージサイズ
-	constexpr float kStageUpperLimit = 100.0f;
-	constexpr float kStageLowerLimit = 620.0f;
+	constexpr int kStageUpperLimit = 100;
+	constexpr int kStageLowerLimit = 620;
 
 	// カラーモード
 	constexpr int kColorDepth = 32;
