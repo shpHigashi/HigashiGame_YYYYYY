@@ -8,6 +8,7 @@ namespace
 	constexpr int kSpawnInterval = 60;
 	// ゲームの制限時間
 	constexpr int kGameMaxTimeFrame = 3600;
+	constexpr int kGameOverDelay = 120;
 }
 
 SceneMain::SceneMain()
@@ -19,9 +20,11 @@ SceneMain::SceneMain()
 	m_waitFrame = 0;
 	m_randNum = 0;
 
-	m_GameTimeRemaining = 0;
+	m_GameTimeRemaining = kGameMaxTimeFrame;
+	m_GameOverDelay = kGameOverDelay;
 
-	isGameEnd = false;
+	m_isGameEnd = false;
+	m_isEnd = false;
 }
 SceneMain::~SceneMain()
 {
@@ -33,7 +36,7 @@ void SceneMain::init()
 {
 	m_hPlayerGraphic = LoadGraph("imagedata/VVVVVV.png");
 	m_hPlayerDeadGraphic = LoadGraph("imagedata/VVVVVVdead.png");
-	m_hEnemyGraphic = LoadGraph("imagedata/enemy.png");
+	m_hEnemyGraphic = LoadGraph("imagedata/yChara.png");
 
 	m_player.setHandle(m_hPlayerGraphic, m_hPlayerDeadGraphic);
 
@@ -53,7 +56,6 @@ void SceneMain::init()
 	m_player.init();
 
 	m_waitFrame = kSpawnInterval;
-	m_GameTimeRemaining = kGameMaxTimeFrame;
 }
 
 // 終了処理
@@ -66,8 +68,17 @@ void SceneMain::end()
 // 毎フレームの処理
 void SceneMain::update()
 {
-	if (m_player.getIsDead()) return;
+	if (!m_GameOverDelay)
+	{
+		m_isEnd = true;
+	}
 	
+	if (m_player.getIsDead())
+	{
+		m_GameOverDelay--;
+		return;
+	}
+
 	m_GameTimeRemaining--;
 	m_waitFrame--;
 

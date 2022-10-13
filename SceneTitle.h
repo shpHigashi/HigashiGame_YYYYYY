@@ -6,8 +6,8 @@ class SceneTitle : public SceneBase
 public:
 	SceneTitle()
 	{
-		m_textPosY = 0;
-		m_textVecY = 0;
+		m_LeftTextPosY = 0;
+		m_LeftTextVecY = 0;
 		m_isEnd = false;
 	}
 	virtual ~SceneTitle() {}
@@ -22,8 +22,8 @@ public:
 	virtual bool isEnd() { return m_isEnd; }
 private:
 	// テキスト表示位置変更
-	int m_textPosY;
-	int m_textVecY;
+	int m_LeftTextPosY;
+	int m_LeftTextVecY;
 
 	bool m_isEnd;
 };

@@ -56,7 +56,7 @@ void SceneManager::update()
 		break;
 	case SceneManager::kSceneKindMain:
 		m_main.update();
-		isEnd = m_player.getIsDead();
+		isEnd = m_main.isEnd();
 		break;
 	case SceneManager::kSceneKindNum:
 	default:

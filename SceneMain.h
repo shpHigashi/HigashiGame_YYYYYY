@@ -28,6 +28,8 @@ public:
 	void createEnemyRight();
 	void createEnemyLeft();
 
+	virtual bool isEnd() { return m_isEnd; }
+
 private:
 	static constexpr int kMobMax = 5;
 
@@ -40,6 +42,7 @@ private:
 
 	// ゲームの制限時間
 	int m_GameTimeRemaining;
+	int m_GameOverDelay;
 	// 
 	int m_waitFrame;
 
@@ -47,7 +50,8 @@ private:
 	int m_randNum;
 
 	// ゲーム終了
-	bool isGameEnd;
+	bool m_isGameEnd;
+	bool m_isEnd;
 
 	// プレイヤー
 	Player m_player;
