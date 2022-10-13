@@ -20,6 +20,8 @@ public:
 	// 毎フレームの描画
 	void draw();
 
+	void gameEnd();
+
 	void HitCheck();
 
 	// 敵の生成
@@ -27,7 +29,7 @@ public:
 	void createEnemyLeft();
 
 private:
-	static constexpr int kMobMax = 10;
+	static constexpr int kMobMax = 5;
 
 private:
 
@@ -36,8 +38,16 @@ private:
 	int m_hPlayerDeadGraphic;
 	int m_hEnemyGraphic;
 
+	// ゲームの制限時間
+	int m_GameTimeRemaining;
+	// 
 	int m_waitFrame;
+
+	// 乱数取得用変数
 	int m_randNum;
+
+	// ゲーム終了
+	bool isGameEnd;
 
 	// プレイヤー
 	Player m_player;

@@ -4,7 +4,10 @@
 
 namespace
 {
+	// 敵出現用の遅延時間
 	constexpr int kSpawnInterval = 60;
+	// ゲームの制限時間
+	constexpr int kGameMaxTimeFrame = 3600;
 }
 
 SceneMain::SceneMain()
@@ -15,6 +18,10 @@ SceneMain::SceneMain()
 
 	m_waitFrame = 0;
 	m_randNum = 0;
+
+	m_GameTimeRemaining = 0;
+
+	isGameEnd = false;
 }
 SceneMain::~SceneMain()
 {
@@ -46,6 +53,7 @@ void SceneMain::init()
 	m_player.init();
 
 	m_waitFrame = kSpawnInterval;
+	m_GameTimeRemaining = kGameMaxTimeFrame;
 }
 
 // 終了処理
@@ -60,6 +68,7 @@ void SceneMain::update()
 {
 	if (m_player.getIsDead()) return;
 	
+	m_GameTimeRemaining--;
 	m_waitFrame--;
 
 	if (!m_waitFrame)
@@ -102,6 +111,10 @@ void SceneMain::draw()
 	// 線の表示
 	DrawLine(0, Game::kStageUpperLimit, Game::kScreenWidth, Game::kStageUpperLimit, GetColor(255, 255, 255));
 	DrawLine(0, Game::kStageLowerLimit, Game::kScreenWidth, Game::kStageLowerLimit, GetColor(255, 255, 255));
+
+	// 制限時間の表示
+	SetFontSize(60);
+	DrawFormatString(Game::kScreenWidth / 2 - 30, Game::kStageLowerLimit + 25, GetColor(255, 255, 255), "%d", m_GameTimeRemaining / 60);
 }
 
 void SceneMain::HitCheck()
@@ -129,7 +142,7 @@ void SceneMain::createEnemyRight()
 {
 	for (auto& EnemyRight : m_EnemyRight)
 	{
-		if (EnemyRight.isExist())continue;
+		if (EnemyRight.isExist()) continue;
 
 		EnemyRight.start(EnemyRight.getRandPos());
 		return;
@@ -140,7 +153,7 @@ void SceneMain::createEnemyLeft()
 {
 	for (auto& EnemyLeft : m_EnemyLeft)
 	{
-		if (EnemyLeft.isExist())continue;
+		if (EnemyLeft.isExist()) continue;
 
 		EnemyLeft.start(EnemyLeft.getRandPos());
 		return;

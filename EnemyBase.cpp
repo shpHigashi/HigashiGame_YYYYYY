@@ -9,7 +9,7 @@ namespace
     // ‰æ‘œ‚Ì‰ñ“]‘¬“x
     constexpr float kRotaSpeed = 0.3f;
     // “G‚Ì‰Šú‰»À•W
-    constexpr float kSetEnemy = -20.0f;
+    constexpr float kSetEnemy = -50.0f;
 }
 
 EnemyBase::EnemyBase()
@@ -46,7 +46,7 @@ void EnemyBase::start(Vec2 pos)
 
 void EnemyBase::update()
 {
-    if (!m_isExist)return;
+    if (!m_isExist) return;
 }
 
 void EnemyBase::draw()

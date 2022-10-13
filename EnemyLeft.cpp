@@ -21,6 +21,7 @@ void EnemyLeft::update()
     m_pos += m_vec;
 
     m_angle += kRotaSpeed;
+    
     if (m_pos.x > Game::kScreenWidth)
     {
         m_isExist = false;
