@@ -35,6 +35,7 @@ private:
 private:
 
 	// キャラクターのグラフィックハンドル
+	int m_hBackgroundGraphic;
 	int m_hPlayerGraphic;
 	int m_hPlayerDeadGraphic;
 	int m_hEnemyGraphic;

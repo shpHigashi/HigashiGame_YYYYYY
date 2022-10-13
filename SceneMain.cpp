@@ -34,6 +34,7 @@ SceneMain::~SceneMain()
 // ‰Šú‰»
 void SceneMain::init()
 {
+	m_hBackgroundGraphic = LoadGraph("imagedata/VVVVVVbackground.png");
 	m_hPlayerGraphic = LoadGraph("imagedata/VVVVVV.png");
 	m_hPlayerDeadGraphic = LoadGraph("imagedata/VVVVVVdead.png");
 	m_hEnemyGraphic = LoadGraph("imagedata/enemy.png");
@@ -72,6 +73,9 @@ void SceneMain::end()
 // –ˆƒtƒŒ[ƒ€‚Ìˆ—
 void SceneMain::update()
 {
+	// ”wŒi‚Ì•\¦
+	DrawGraph(0, 0, m_hBackgroundGraphic, true);
+	
 	if (!m_GameTimeRemaining)
 	{
 		m_isGameEnd = true;
