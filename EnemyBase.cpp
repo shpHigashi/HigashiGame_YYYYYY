@@ -41,7 +41,7 @@ void EnemyBase::start(Vec2 pos)
     m_isExist = true;
     m_pos = pos;
 
-    //m_vec.x = static_cast<float>(GetRand(5)) + 5;
+    m_vec.x = static_cast<float>(GetRand(5)) + 5;
 }
 
 void EnemyBase::update()

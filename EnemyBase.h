@@ -10,12 +10,15 @@ public:
 	virtual void init();
 	virtual void setHandle(int handle);
 
-	float getPosX() const { return m_pos.x; }
-	float getPosY() const { return m_pos.y; }
-
 	virtual void start(Vec2 pos);
 	virtual void update();
 	virtual void draw();
+
+	float getPosX() const { return m_pos.x; }
+	float getPosY() const { return m_pos.y; }
+
+	virtual float getCenterX() { return m_pos.x + (m_height / 2); }
+	virtual float getCenterY() { return m_pos.y + (m_height / 2); }
 
 	// 当たり判定実装用に四方向の座標を取得する　
 	float getLeft()	const { return m_pos.x; }

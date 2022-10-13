@@ -81,7 +81,23 @@ void Player::update()
 
 void Player::draw()
 {
-    if (m_isReverseSide && m_isReverseLength)
+    if (m_isDead && m_isReverseSide && m_isReverseLength)
+    {
+        DrawRotaGraphF(m_pos.x + 15.0f, m_pos.y, 1.0, DX_PI, m_deadHandle, true, false);
+    }
+    else if (m_isDead && m_isReverseLength)
+    {
+        DrawRotaGraphF(m_pos.x + 15.0f, m_pos.y, 1.0, DX_PI, m_deadHandle, true, true);
+    }
+    else if (m_isDead && m_isReverseSide)
+    {
+        DrawTurnGraphF(m_pos.x, m_pos.y, m_deadHandle, true);
+    }
+    else if(m_isDead)
+    {
+        DrawGraphF(m_pos.x, m_pos.y, m_deadHandle, true);
+    }
+    else if (m_isReverseSide && m_isReverseLength)
     {
         DrawRotaGraphF(m_pos.x + 15.0f, m_pos.y, 1.0, DX_PI, m_aliveHandle, true, false);
     }
@@ -98,8 +114,4 @@ void Player::draw()
         DrawGraphF(m_pos.x, m_pos.y, m_aliveHandle, true);
     }
 
-    if (m_isDead)
-    {
-        DrawGraphF(m_pos.x, m_pos.y, m_deadHandle, true);
-    }
 }

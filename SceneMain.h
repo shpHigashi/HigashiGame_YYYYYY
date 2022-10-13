@@ -20,7 +20,7 @@ public:
 	// –ˆƒtƒŒ[ƒ€‚Ì•`‰æ
 	void draw();
 
-	bool isHitCheck();
+	void HitCheck();
 
 	// “G‚Ì¶¬
 	void createEnemyRight();

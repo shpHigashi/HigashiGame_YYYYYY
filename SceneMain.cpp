@@ -58,6 +58,8 @@ void SceneMain::end()
 // –ˆƒtƒŒ[ƒ€‚Ìˆ—
 void SceneMain::update()
 {
+	if (m_player.getIsDead()) return;
+	
 	m_waitFrame--;
 
 	if (!m_waitFrame)
@@ -70,7 +72,7 @@ void SceneMain::update()
 
 	m_player.update();
 
-	isHitCheck();
+	HitCheck();
 
 	for (auto& EnemyLeft : m_EnemyLeft)
 	{
@@ -102,19 +104,25 @@ void SceneMain::draw()
 	DrawLine(0, Game::kStageLowerLimit, Game::kScreenWidth, Game::kStageLowerLimit, GetColor(255, 255, 255));
 }
 
-bool SceneMain::isHitCheck()
+void SceneMain::HitCheck()
 {
 	for (auto& EnemyLeft : m_EnemyLeft)
 	{
-		//m_player.isDead();
+		if (EnemyLeft.getRight() <= m_player.getLeft()) continue;
+		if (m_player.getRight() <= EnemyLeft.getLeft()) continue;
+		if (EnemyLeft.getBottom() <= m_player.getTop()) continue;
+		if (m_player.getBottom() <= EnemyLeft.getTop()) continue;
+		m_player.isDead();
 	}
 
 	for (auto& EnemyRight : m_EnemyRight)
 	{
-		EnemyRight.draw();
+		if (EnemyRight.getRight() <= m_player.getLeft()) continue;
+		if (m_player.getRight() <= EnemyRight.getLeft()) continue;
+		if (EnemyRight.getBottom() <= m_player.getTop()) continue;
+		if (m_player.getBottom() <= EnemyRight.getTop()) continue;
+		m_player.isDead();
 	}
-
-	return false;
 }
 
 void SceneMain::createEnemyRight()
