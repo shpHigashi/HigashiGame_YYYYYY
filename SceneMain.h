@@ -20,14 +20,13 @@ public:
 	// –ˆƒtƒŒ[ƒ€‚Ì•`‰æ
 	void draw();
 
-	void gameEnd();
-
 	void HitCheck();
 
 	// “G‚Ì¶¬
 	void createEnemyRight();
 	void createEnemyLeft();
 
+	virtual bool isGameEnd() { return m_isGameEnd; }
 	virtual bool isEnd() { return m_isEnd; }
 
 private:

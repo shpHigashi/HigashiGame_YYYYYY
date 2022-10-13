@@ -24,6 +24,8 @@ Player::Player()
 
 void Player::init()
 {
+    m_isDead = false;
+    
     m_vec.x = 0;
     m_vec.y = kMoveSpeed;
 }

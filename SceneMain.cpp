@@ -5,10 +5,10 @@
 namespace
 {
 	// 敵出現用の遅延時間
-	constexpr int kSpawnInterval = 60;
+	constexpr int kSpawnInterval = 80;
 	// ゲームの制限時間
-	constexpr int kGameMaxTimeFrame = 3600;
-	constexpr int kGameOverDelay = 120;
+	constexpr int kGameMaxTimeFrame = 1800;
+	constexpr int kGameOverDelay = 90;
 }
 
 SceneMain::SceneMain()
@@ -56,6 +56,10 @@ void SceneMain::init()
 	m_player.init();
 
 	m_waitFrame = kSpawnInterval;
+	m_GameTimeRemaining = kGameMaxTimeFrame;
+	m_GameOverDelay = kGameOverDelay;
+
+	m_isEnd = false;
 }
 
 // 終了処理
@@ -68,11 +72,16 @@ void SceneMain::end()
 // 毎フレームの処理
 void SceneMain::update()
 {
-	if (!m_GameOverDelay)
+	if (!m_GameTimeRemaining)
+	{
+		m_isGameEnd = true;
+		m_isEnd = true;
+	}
+	else if (!m_GameOverDelay)
 	{
 		m_isEnd = true;
 	}
-	
+
 	if (m_player.getIsDead())
 	{
 		m_GameOverDelay--;
