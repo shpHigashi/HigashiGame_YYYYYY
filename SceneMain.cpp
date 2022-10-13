@@ -36,7 +36,7 @@ void SceneMain::init()
 {
 	m_hPlayerGraphic = LoadGraph("imagedata/VVVVVV.png");
 	m_hPlayerDeadGraphic = LoadGraph("imagedata/VVVVVVdead.png");
-	m_hEnemyGraphic = LoadGraph("imagedata/yChara.png");
+	m_hEnemyGraphic = LoadGraph("imagedata/enemy.png");
 
 	m_player.setHandle(m_hPlayerGraphic, m_hPlayerDeadGraphic);
 
