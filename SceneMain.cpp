@@ -8,11 +8,13 @@ namespace
 	constexpr int kSpawnInterval = 80;
 	// ÉQÅ[ÉÄÇÃêßå¿éûä‘
 	constexpr int kGameMaxTimeFrame = 1800;
+	// éÄñSéûÇÃíxâÑ
 	constexpr int kGameOverDelay = 90;
 }
 
 SceneMain::SceneMain()
 {
+	m_hBackgroundGraphic = -1;
 	m_hPlayerGraphic = -1;
 	m_hPlayerDeadGraphic = -1;
 	m_hEnemyGraphic = -1;
@@ -23,7 +25,7 @@ SceneMain::SceneMain()
 	m_GameTimeRemaining = kGameMaxTimeFrame;
 	m_GameOverDelay = kGameOverDelay;
 
-	m_isGameEnd = false;
+	m_isGameStop = false;
 	m_isEnd = false;
 }
 SceneMain::~SceneMain()
@@ -35,8 +37,8 @@ SceneMain::~SceneMain()
 void SceneMain::init()
 {
 	m_hBackgroundGraphic = LoadGraph("imagedata/VVVVVVbackground.png");
-	m_hPlayerGraphic = LoadGraph("imagedata/VVVVVV.png");
-	m_hPlayerDeadGraphic = LoadGraph("imagedata/VVVVVVdead.png");
+	m_hPlayerGraphic = LoadGraph("imagedata/player.png");
+	m_hPlayerDeadGraphic = LoadGraph("imagedata/playerDead.png");
 	m_hEnemyGraphic = LoadGraph("imagedata/enemy.png");
 
 	m_player.setHandle(m_hPlayerGraphic, m_hPlayerDeadGraphic);
@@ -78,7 +80,7 @@ void SceneMain::update()
 	
 	if (!m_GameTimeRemaining)
 	{
-		m_isGameEnd = true;
+		m_isGameStop = true;
 		m_isEnd = true;
 	}
 	else if (!m_GameOverDelay)

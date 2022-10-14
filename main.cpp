@@ -39,6 +39,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		scene.draw();
 
+		//
 		isGameEnd = scene.getIsGameEnd();
 		if (isGameEnd)
 		{

@@ -2,6 +2,14 @@
 #include "DxLib.h"
 #include "game.h"
 
+namespace
+{
+	// ゲームタイトル
+	const char* const kGameTitle = "YYYYYY";
+	const char* const kTitleMessage = "Zキー or Aボタンを押して";
+	const char* const kGameStart = "スタート";
+}
+
 void SceneTitle::init()
 {
 	m_LeftTextPosY = 0;
@@ -36,12 +44,12 @@ void SceneTitle::draw()
 {
 	SetFontSize(60);
 	
-	DrawString(0, m_LeftTextPosY, "YYYYYY", GetColor(255, 255, 255));
-	DrawString(Game::kScreenWidth - 187, m_LeftTextPosY, "YYYYYY", GetColor(255, 255, 255));
+	DrawString(0, m_LeftTextPosY, kGameTitle, GetColor(0, 255, 255));
+	DrawString(Game::kScreenWidth - GetDrawStringWidth(kGameTitle, 6), m_LeftTextPosY, kGameTitle, GetColor(0, 255, 255));
 
-	DrawString(Game::kScreenWidth / 2 - 90, 210, "YYYYYY", GetColor(255, 255, 255));
+	DrawString(Game::kScreenWidth / 2 - GetDrawStringWidth(kGameTitle, 3), 210, kGameTitle, GetColor(0, 255, 255));
 
 	SetFontSize(30);
-	DrawString(Game::kScreenWidth / 2 - 180, Game::kScreenHeight / 2, "Zキー or Aボタンを押して", GetColor(255, 255, 255));
-	DrawString(Game::kScreenWidth / 2 - 105, Game::kScreenHeight / 2 + 30, "ゲームスタート", GetColor(255, 255, 255));
+	DrawString(Game::kScreenWidth / 2 - GetDrawStringWidth(kTitleMessage, 12), Game::kScreenHeight / 2, kTitleMessage, GetColor(255, 255, 255));
+	DrawString(Game::kScreenWidth / 2 - GetDrawStringWidth(kGameStart, 4), Game::kScreenHeight / 2 + 30, kGameStart, GetColor(255, 255, 255));
 }

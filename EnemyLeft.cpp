@@ -11,7 +11,7 @@ namespace
 Vec2 EnemyLeft::getRandPos()
 {
     m_pos.x = 0;
-    m_pos.y = static_cast<float>(GetRand(Game::kStageLowerLimit - Game::kStageUpperLimit) + Game::kStageUpperLimit);
+    m_pos.y = static_cast<float>(GetRand((Game::kStageLowerLimit - m_height) - Game::kStageUpperLimit) + Game::kStageUpperLimit);
 
     return m_pos;
 }

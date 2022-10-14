@@ -26,11 +26,11 @@ public:
 	void createEnemyRight();
 	void createEnemyLeft();
 
-	virtual bool isGameEnd() { return m_isGameEnd; }
+	virtual bool isGameStop() { return m_isGameStop; }
 	virtual bool isEnd() { return m_isEnd; }
 
 private:
-	static constexpr int kMobMax = 5;
+	static constexpr int kMobMax = 10;
 
 private:
 
@@ -50,7 +50,7 @@ private:
 	int m_randNum;
 
 	// ゲーム終了
-	bool m_isGameEnd;
+	bool m_isGameStop;
 	bool m_isEnd;
 
 	// プレイヤー

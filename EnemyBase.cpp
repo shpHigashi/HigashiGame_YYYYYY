@@ -51,5 +51,5 @@ void EnemyBase::update()
 
 void EnemyBase::draw()
 {
-    DrawRotaGraphF(m_pos.x, m_pos.y, 1.0, m_angle, m_handle, true, false);
+    DrawRotaGraphF(getCenterX(), getCenterY(), 1.0, m_angle, m_handle, true, false);
 }

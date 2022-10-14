@@ -69,13 +69,15 @@ void Player::update()
     {
         m_pos.x = Game::kScreenWidth - m_width;
     }
-    if (m_pos.y <= Game::kStageUpperLimit)
+    if (getTop() < Game::kStageUpperLimit)
     {
+        m_pos.y = Game::kStageUpperLimit;
         m_vec.y *= -1;
         m_isReverseLength = false;
     }
-    if (m_pos.y + m_width > Game::kStageLowerLimit)
+    if (getBottom() > Game::kStageLowerLimit)
     {
+        m_pos.y = Game::kStageLowerLimit - m_height;
         m_vec.y *= -1;
         m_isReverseLength = true;
     }
@@ -85,11 +87,11 @@ void Player::draw()
 {
     if (m_isDead && m_isReverseSide && m_isReverseLength)
     {
-        DrawRotaGraphF(m_pos.x + 15.0f, m_pos.y, 1.0, DX_PI, m_deadHandle, true, false);
+        DrawRotaGraphF(m_pos.x + 15.0f, m_pos.y + 35.0f, 1.0, DX_PI, m_deadHandle, true, false);
     }
     else if (m_isDead && m_isReverseLength)
     {
-        DrawRotaGraphF(m_pos.x + 15.0f, m_pos.y, 1.0, DX_PI, m_deadHandle, true, true);
+        DrawRotaGraphF(m_pos.x + 15.0f, m_pos.y + 35.0f, 1.0, DX_PI, m_deadHandle, true, true);
     }
     else if (m_isDead && m_isReverseSide)
     {
@@ -101,11 +103,11 @@ void Player::draw()
     }
     else if (m_isReverseSide && m_isReverseLength)
     {
-        DrawRotaGraphF(m_pos.x + 15.0f, m_pos.y, 1.0, DX_PI, m_aliveHandle, true, false);
+        DrawRotaGraphF(m_pos.x + 15.0f, m_pos.y + 35.0f, 1.0, DX_PI, m_aliveHandle, true, false);
     }
     else if (m_isReverseLength)
     {
-        DrawRotaGraphF(m_pos.x + 15.0f, m_pos.y, 1.0, DX_PI, m_aliveHandle, true, true);
+        DrawRotaGraphF(m_pos.x + 15.0f, m_pos.y + 35.0f, 1.0, DX_PI, m_aliveHandle, true, true);
     }
     else if (m_isReverseSide)
     {
@@ -115,5 +117,4 @@ void Player::draw()
     {
         DrawGraphF(m_pos.x, m_pos.y, m_aliveHandle, true);
     }
-
 }

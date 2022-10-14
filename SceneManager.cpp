@@ -84,7 +84,7 @@ void SceneManager::update()
 			m_kind = kSceneKindMain;
 			break;
 		case SceneManager::kSceneKindMain:
-			if (m_main.isGameEnd())
+			if (m_main.isGameStop())
 			{
 				m_main.end();
 				m_title.end();
