@@ -12,7 +12,7 @@ namespace
 	constexpr int kGameOverDelay = 90;
 	// ゲームオーバー
 	const char* const kGameOver = "Game Over";
-	constexpr int kFontSize = 30;
+	constexpr int kFontSize = 60;
 }
 
 SceneMain::SceneMain()

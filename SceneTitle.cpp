@@ -33,12 +33,12 @@ void SceneTitle::update()
 	if (m_TextPosY < 0)
 	{
 		m_TextPosY = 0;
-		m_TextVecY = 4;
+		m_TextVecY *= -1;
 	}
 	if (m_TextPosY > Game::kScreenHeight - m_height)
 	{
 		m_TextPosY = Game::kScreenHeight - m_height;
-		m_TextVecY = -4;
+		m_TextVecY *= -1;
 	}
 
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
