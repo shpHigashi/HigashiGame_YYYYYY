@@ -10,6 +10,9 @@ namespace
 	constexpr int kGameMaxTimeFrame = 1800;
 	// Ž€–SŽž‚Ì’x‰„
 	constexpr int kGameOverDelay = 90;
+	// ƒQ[ƒ€ƒI[ƒo[
+	const char* const kGameOver = "Game Over";
+	constexpr int kFontSize = 30;
 }
 
 SceneMain::SceneMain()
@@ -21,6 +24,7 @@ SceneMain::SceneMain()
 
 	m_waitFrame = 0;
 	m_randNum = 0;
+	m_fontSize = 0;
 
 	m_GameTimeRemaining = kGameMaxTimeFrame;
 	m_GameOverDelay = kGameOverDelay;
@@ -58,6 +62,8 @@ void SceneMain::init()
 	m_player.setPos(Game::kScreenWidth / 2, Game::kScreenHeight / 2);
 	m_player.init();
 
+	m_fontSize = kFontSize;
+
 	m_waitFrame = kSpawnInterval;
 	m_GameTimeRemaining = kGameMaxTimeFrame;
 	m_GameOverDelay = kGameOverDelay;
@@ -90,6 +96,10 @@ void SceneMain::update()
 
 	if (m_player.getIsDead())
 	{
+		m_fontSize++;
+		SetFontSize(m_fontSize);
+		DrawString(Game::kScreenWidth / 2 - GetDrawStringWidth(kGameOver, 4), 210, kGameOver, GetColor(255, 0, 0));
+		
 		m_GameOverDelay--;
 		return;
 	}
@@ -139,8 +149,11 @@ void SceneMain::draw()
 	DrawLine(0, Game::kStageLowerLimit, Game::kScreenWidth, Game::kStageLowerLimit, GetColor(255, 255, 255));
 
 	// §ŒÀŽžŠÔ‚Ì•\Ž¦
-	SetFontSize(60);
-	DrawFormatString(Game::kScreenWidth / 2 - 30, Game::kStageLowerLimit + 25, GetColor(255, 255, 255), "%d", m_GameTimeRemaining / 60);
+	SetFontSize(Game::kFontSize);
+	
+	if (m_GameTimeRemaining >= 600) DrawFormatString(Game::kScreenWidth / 2 - 30, Game::kStageLowerLimit + 25, GetColor(255, 255, 255), "%d", m_GameTimeRemaining / 60);
+	else if (m_GameTimeRemaining >= 300) DrawFormatString(Game::kScreenWidth / 2 - 30, Game::kStageLowerLimit + 25, GetColor(255, 216, 0), "%d", m_GameTimeRemaining / 60);
+	else DrawFormatString(Game::kScreenWidth / 2 - 30, Game::kStageLowerLimit + 25, GetColor(255, 0, 0), "%d", m_GameTimeRemaining / 60);
 }
 
 void SceneMain::HitCheck()

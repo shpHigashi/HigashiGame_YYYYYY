@@ -17,4 +17,7 @@ namespace Game
 
 	// カラーモード
 	constexpr int kColorDepth = 32;
+
+	// 基準のフォントサイズ
+	constexpr int kFontSize = 60;
 }

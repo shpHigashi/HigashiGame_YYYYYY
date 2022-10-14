@@ -4,33 +4,41 @@
 
 namespace
 {
-	// ゲームタイトル
-	const char* const kGameTitle = "YYYYYY";
+	// タイトルメッセージ
 	const char* const kTitleMessage = "Zキー or Aボタンを押して";
 	const char* const kGameStart = "スタート";
+	// テキストの回転角度
+	constexpr float kRotaSpeed = 0.02f;
 }
 
 void SceneTitle::init()
 {
-	m_LeftTextPosY = 0;
-	m_LeftTextVecY = 4;
+	m_TextPosY = 0;
+	m_TextVecY = 4;
+
+	m_angle = 0;
 
 	m_isEnd = false;
+
+	m_handle = LoadGraph("imagedata/VVVVVV_logo.png");
+	GetGraphSize(m_handle, &m_width, &m_height);
 }
 
 void SceneTitle::update()
 {
+	//m_angle += kRotaSpeed;
+	
 	// 文字の移動
-	m_LeftTextPosY += m_LeftTextVecY;
-	if (m_LeftTextPosY < 0)
+	m_TextPosY += m_TextVecY;
+	if (m_TextPosY < 0)
 	{
-		m_LeftTextPosY = 0;
-		m_LeftTextVecY = 4;
+		m_TextPosY = 0;
+		m_TextVecY = 4;
 	}
-	if (m_LeftTextPosY > 200)
+	if (m_TextPosY > Game::kScreenHeight - m_height)
 	{
-		m_LeftTextPosY = 200;
-		m_LeftTextVecY = -4;
+		m_TextPosY = Game::kScreenHeight - m_height;
+		m_TextVecY = -4;
 	}
 
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
@@ -42,12 +50,14 @@ void SceneTitle::update()
 
 void SceneTitle::draw()
 {
-	SetFontSize(60);
+	LoadGraphScreen(0, 0, "imagedata/VVVVVVbackground.png", true);
 	
-	DrawString(0, m_LeftTextPosY, kGameTitle, GetColor(0, 255, 255));
-	DrawString(Game::kScreenWidth - GetDrawStringWidth(kGameTitle, 6), m_LeftTextPosY, kGameTitle, GetColor(0, 255, 255));
+	SetFontSize(30);
+	
+	DrawGraph(0, m_TextPosY, m_handle, true);
+	DrawGraph(Game::kScreenWidth - m_width, m_TextPosY, m_handle, true);
 
-	DrawString(Game::kScreenWidth / 2 - GetDrawStringWidth(kGameTitle, 3), 210, kGameTitle, GetColor(0, 255, 255));
+	DrawRotaGraphF(Game::kScreenWidth / 2, Game::kScreenHeight / 3, 1.5, m_angle, m_handle, true, false);
 
 	SetFontSize(30);
 	DrawString(Game::kScreenWidth / 2 - GetDrawStringWidth(kTitleMessage, 12), Game::kScreenHeight / 2, kTitleMessage, GetColor(255, 255, 255));

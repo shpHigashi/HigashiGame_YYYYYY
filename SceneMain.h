@@ -40,6 +40,9 @@ private:
 	int m_hPlayerDeadGraphic;
 	int m_hEnemyGraphic;
 
+	// ゲームオーバー文字サイズ
+	int m_fontSize;
+
 	// ゲームの制限時間
 	int m_GameTimeRemaining;
 	int m_GameOverDelay;
