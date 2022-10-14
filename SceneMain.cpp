@@ -74,7 +74,9 @@ void SceneMain::init()
 // I—¹ˆ—
 void SceneMain::end()
 {
+	DeleteGraph(m_hBackgroundGraphic);
 	DeleteGraph(m_hPlayerGraphic);
+	DeleteGraph(m_hPlayerDeadGraphic);
 	DeleteGraph(m_hEnemyGraphic);
 }
 

@@ -17,6 +17,11 @@ void SceneClear::init()
 	GetGraphSize(m_handle, &m_width, &m_height);
 }
 
+void SceneClear::end()
+{
+	DeleteGraph(m_handle);
+}
+
 void SceneClear::update()
 {
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);

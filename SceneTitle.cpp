@@ -24,6 +24,12 @@ void SceneTitle::init()
 	GetGraphSize(m_handle, &m_width, &m_height);
 }
 
+// I—¹ˆ—
+void SceneTitle::end()
+{
+	DeleteGraph(m_handle);
+}
+
 void SceneTitle::update()
 {
 	//m_angle += kRotaSpeed;

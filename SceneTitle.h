@@ -21,7 +21,9 @@ public:
 	virtual ~SceneTitle() {}
 
 	virtual void init();
-	virtual void end() {}
+	
+	// I—¹ˆ—
+	void end();
 
 	virtual void update();
 	virtual void draw();
