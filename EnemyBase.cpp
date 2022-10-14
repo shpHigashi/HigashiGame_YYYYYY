@@ -10,6 +10,8 @@ namespace
     constexpr float kRotaSpeed = 0.3f;
     // “G‚Ì‰Šú‰»À•W
     constexpr float kSetEnemy = -50.0f;
+    // “G‚ÌˆÚ“®‘¬“x‚Ì‰ºŒÀAãŒÀ
+    constexpr int kSpeedLimit = 5;
 }
 
 EnemyBase::EnemyBase()
@@ -41,7 +43,7 @@ void EnemyBase::start(Vec2 pos)
     m_isExist = true;
     m_pos = pos;
 
-    m_vec.x = static_cast<float>(GetRand(5)) + 5;
+    m_vec.x = static_cast<float>(GetRand(kSpeedLimit)) + kSpeedLimit;
 }
 
 void EnemyBase::update()
