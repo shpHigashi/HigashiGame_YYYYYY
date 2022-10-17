@@ -19,6 +19,7 @@ namespace Game
 	// カラーモード
 	constexpr int kColorDepth = 32;
 
+	// 背景用画像
 	const char* const kBackgroundGraph = "imagedata/VVVVVVbackground.png";
 
 	// 基準のフォントサイズ

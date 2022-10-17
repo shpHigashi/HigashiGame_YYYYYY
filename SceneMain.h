@@ -48,7 +48,7 @@ private:
 	int m_fontSize;
 
 	// ゲームの制限時間
-	int m_GameTimeRemaining;
+	int m_gameTimeRemaining;
 	// ゲームオーバー時の遅延時間
 	int m_GameOverDelay;
 	// 敵の出現遅延

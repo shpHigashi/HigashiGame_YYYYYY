@@ -6,6 +6,10 @@ namespace
 {
     // 移動速度
     constexpr float kMoveSpeed = 12.0f;
+
+    // 画像の表示位置
+    constexpr float kPlayerDrawPosX = 16.0f;
+    constexpr float kPlayerDrawPosY = 34.0f;
 }
 
 Player::Player()
@@ -100,11 +104,11 @@ void Player::draw()
     // 左右、上下の反転、死亡時のプレイヤーでそれぞれ描画する
     if (m_isDead && m_isReverseSide && m_isReverseLength)
     {
-        DrawRotaGraphF(m_pos.x + 15.0f, m_pos.y + 35.0f, 1.0, DX_PI, m_deadHandle, true, false);
+        DrawRotaGraphF(m_pos.x + kPlayerDrawPosX, m_pos.y + kPlayerDrawPosY, 1.0, DX_PI, m_deadHandle, true, false);
     }
     else if (m_isDead && m_isReverseLength)
     {
-        DrawRotaGraphF(m_pos.x + 15.0f, m_pos.y + 35.0f, 1.0, DX_PI, m_deadHandle, true, true);
+        DrawRotaGraphF(m_pos.x + kPlayerDrawPosX, m_pos.y + kPlayerDrawPosY, 1.0, DX_PI, m_deadHandle, true, true);
     }
     else if (m_isDead && m_isReverseSide)
     {
@@ -116,11 +120,11 @@ void Player::draw()
     }
     else if (m_isReverseSide && m_isReverseLength)
     {
-        DrawRotaGraphF(m_pos.x + 15.0f, m_pos.y + 35.0f, 1.0, DX_PI, m_aliveHandle, true, false);
+        DrawRotaGraphF(m_pos.x + kPlayerDrawPosX, m_pos.y + kPlayerDrawPosY, 1.0, DX_PI, m_aliveHandle, true, false);
     }
     else if (m_isReverseLength)
     {
-        DrawRotaGraphF(m_pos.x + 15.0f, m_pos.y + 35.0f, 1.0, DX_PI, m_aliveHandle, true, true);
+        DrawRotaGraphF(m_pos.x + kPlayerDrawPosX, m_pos.y + kPlayerDrawPosY, 1.0, DX_PI, m_aliveHandle, true, true);
     }
     else if (m_isReverseSide)
     {
@@ -130,4 +134,5 @@ void Player::draw()
     {
         DrawGraphF(m_pos.x, m_pos.y, m_aliveHandle, true);
     }
+    //DrawBox(getLeft(), getTop(), getRight(), getBottom(), GetColor(255, 255, 255), false);
 }

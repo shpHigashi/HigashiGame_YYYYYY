@@ -13,6 +13,10 @@ namespace
 	// ゲームオーバー
 	const char* const kGameOver = "Game Over";
 	constexpr int kFontSize = 60;
+
+	// 制限時間表示位置
+	constexpr int kTimerPositionX = Game::kScreenWidthHalf - 30;
+	constexpr int kTimerPositionY = Game::kStageLowerLimit + 25;
 }
 
 SceneMain::SceneMain()
@@ -26,7 +30,7 @@ SceneMain::SceneMain()
 	m_randNum = 0;
 	m_fontSize = 0;
 
-	m_GameTimeRemaining = kGameMaxTime;
+	m_gameTimeRemaining = kGameMaxTime;
 	m_GameOverDelay = kGameOverDelay;
 
 	m_isGameClear = false;
@@ -71,7 +75,7 @@ void SceneMain::init()
 
 	// 各時間用変数の初期化
 	m_spawnDelay = kSpawnDelay;
-	m_GameTimeRemaining = kGameMaxTime;
+	m_gameTimeRemaining = kGameMaxTime;
 	m_GameOverDelay = kGameOverDelay;
 
 	// シーン終了を偽に初期化
@@ -94,7 +98,7 @@ void SceneMain::update()
 	// 背景の表示
 	DrawGraph(0, 0, m_hBackgroundGraphic, true);
 	
-	if (!m_GameTimeRemaining)	// ゲーム残り時間が0になった場合
+	if (!m_gameTimeRemaining)	// ゲーム残り時間が0になった場合
 	{
 		m_isGameClear = true;	// ゲームクリアとシーン終了を true にする
 		m_isEnd = true;			// クリア用のシーンへ移行する
@@ -120,7 +124,7 @@ void SceneMain::update()
 	}
 
 	// 1フレームごとに残り時間と敵の出現遅延を減少させる
-	m_GameTimeRemaining--;
+	m_gameTimeRemaining--;
 	m_spawnDelay--;
 
 	// 出現遅延が0になった場合、敵を出現させる
@@ -174,9 +178,9 @@ void SceneMain::draw()
 	// フォントサイズ設定
 	SetFontSize(Game::kFontSize);
 	// ゲームの制限時間表示 (通常は白文字、残り10秒を過ぎると黄色文字、5秒を過ぎると赤文字で表示される)
-	if (m_GameTimeRemaining >= 600) DrawFormatString(Game::kScreenWidthHalf - 30, Game::kStageLowerLimit + 25, GetColor(255, 255, 255), "%d", m_GameTimeRemaining / 60);
-	else if (m_GameTimeRemaining >= 300) DrawFormatString(Game::kScreenWidthHalf - 30, Game::kStageLowerLimit + 25, GetColor(255, 216, 0), "%d", m_GameTimeRemaining / 60);
-	else DrawFormatString(Game::kScreenWidthHalf - 30, Game::kStageLowerLimit + 25, GetColor(255, 0, 0), "%d", m_GameTimeRemaining / 60);
+	if (m_gameTimeRemaining >= 600) DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 255, 255), "%d", m_gameTimeRemaining / 60);
+	else if (m_gameTimeRemaining >= 300) DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 216, 0), "%d", m_gameTimeRemaining / 60);
+	else DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 0, 0), "%d", m_gameTimeRemaining / 60);
 }
 
 // 当たり判定チェック処理
