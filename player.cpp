@@ -77,7 +77,7 @@ void Player::update()
     }
     if (getRight() > Game::kScreenWidth)
     {
-        m_pos.x = Game::kScreenWidth - m_width; // 画面端より右には行かない
+        m_pos.x = static_cast<float>(Game::kScreenWidth - m_width); // 画面端より右には行かない
     }
     // ステージの範囲外に行こうとした場合
     if (getTop() < Game::kStageUpperLimit)
@@ -88,7 +88,7 @@ void Player::update()
     }
     if (getBottom() > Game::kStageLowerLimit)
     {
-        m_pos.y = Game::kStageLowerLimit - m_height;    // ステージの範囲より下には行かない
+        m_pos.y = static_cast<float>(Game::kStageLowerLimit - m_height);    // ステージの範囲より下には行かない
         m_vec.y *= -1;                      // 重力変更
         m_isReverseLength = true;           // 画像反転する
     }

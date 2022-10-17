@@ -67,7 +67,7 @@ void SceneTitle::draw()
 	DrawGraph(0, m_TextPosY, m_handle, true);
 	DrawGraph(Game::kScreenWidth - m_width, m_TextPosY, m_handle, true);
 
-	DrawRotaGraphF(Game::kScreenWidth / 2, Game::kScreenHeight / 3, 1.5, 0, m_handle, true, false);
+	DrawRotaGraphF(Game::kScreenWidthHalf, Game::kScreenHeight / 3, 1.5, 0, m_handle, true, false);
 
 	// フォントサイズの設定
 	SetFontSize(30);

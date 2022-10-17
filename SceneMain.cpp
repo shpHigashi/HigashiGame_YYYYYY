@@ -111,7 +111,7 @@ void SceneMain::update()
 		m_fontSize++;
 		SetFontSize(m_fontSize);
 		// ゲームオーバーのテキストを表示
-		DrawString(Game::kScreenWidth / 2 - GetDrawStringWidth(kGameOver, 4), 210, kGameOver, GetColor(255, 0, 0));
+		DrawString(Game::kScreenWidthHalf - GetDrawStringWidth(kGameOver, 4), 210, kGameOver, GetColor(255, 0, 0));
 		
 		// ゲームオーバー遅延を1フレームごとに減少させる
 		m_GameOverDelay--;
@@ -174,9 +174,9 @@ void SceneMain::draw()
 	// フォントサイズ設定
 	SetFontSize(Game::kFontSize);
 	// ゲームの制限時間表示 (通常は白文字、残り10秒を過ぎると黄色文字、5秒を過ぎると赤文字で表示される)
-	if (m_GameTimeRemaining >= 600) DrawFormatString(Game::kScreenWidth / 2 - 30, Game::kStageLowerLimit + 25, GetColor(255, 255, 255), "%d", m_GameTimeRemaining / 60);
-	else if (m_GameTimeRemaining >= 300) DrawFormatString(Game::kScreenWidth / 2 - 30, Game::kStageLowerLimit + 25, GetColor(255, 216, 0), "%d", m_GameTimeRemaining / 60);
-	else DrawFormatString(Game::kScreenWidth / 2 - 30, Game::kStageLowerLimit + 25, GetColor(255, 0, 0), "%d", m_GameTimeRemaining / 60);
+	if (m_GameTimeRemaining >= 600) DrawFormatString(Game::kScreenWidthHalf - 30, Game::kStageLowerLimit + 25, GetColor(255, 255, 255), "%d", m_GameTimeRemaining / 60);
+	else if (m_GameTimeRemaining >= 300) DrawFormatString(Game::kScreenWidthHalf - 30, Game::kStageLowerLimit + 25, GetColor(255, 216, 0), "%d", m_GameTimeRemaining / 60);
+	else DrawFormatString(Game::kScreenWidthHalf - 30, Game::kStageLowerLimit + 25, GetColor(255, 0, 0), "%d", m_GameTimeRemaining / 60);
 }
 
 // 当たり判定チェック処理

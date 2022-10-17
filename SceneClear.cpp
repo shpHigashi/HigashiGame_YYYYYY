@@ -44,5 +44,5 @@ void SceneClear::draw()
 	LoadGraphScreen(0, 0, Game::kBackgroundGraph, true);
 
 	// クリアテキスト画像の表示
-	DrawRotaGraphF(Game::kScreenWidth / 2, Game::kScreenHeight / 2, 1.5, 0, m_handle, true, false);
+	DrawRotaGraphF(Game::kScreenWidthHalf, Game::kScreenHeightHalf, 1.5, 0, m_handle, true, false);
 }
