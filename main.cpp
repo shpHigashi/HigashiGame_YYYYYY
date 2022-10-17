@@ -21,6 +21,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	// ダブルバッファモード
 	SetDrawScreen(DX_SCREEN_BACK);
 
+	// ゲーム終了判定用の変数作成
 	int isGameEnd = false;
 
 	SceneManager scene;
@@ -35,12 +36,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		// 画面のクリア
 		ClearDrawScreen();
 
+		// 現在のシーンの更新
 		scene.update();
 
+		// 現在のシーンの描画
 		scene.draw();
 
-		//
+		// ゲーム終了判定
 		isGameEnd = scene.getIsGameEnd();
+		// isGameEndが真の場合ループ終了
 		if (isGameEnd)
 		{
 			break;

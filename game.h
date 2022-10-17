@@ -9,7 +9,8 @@ namespace Game
 	// ウィンドウサイズ
 	constexpr int kScreenWidth = 1280;
 	constexpr int kScreenHeight = 720;
-	constexpr int kScreenInterval = 10;
+	constexpr int kScreenWidthHalf = kScreenWidth / 2;
+	constexpr int kScreenHeightHalf = kScreenHeight / 2;
 
 	// ゲームのステージサイズ
 	constexpr int kStageUpperLimit = 100;
@@ -17,6 +18,8 @@ namespace Game
 
 	// カラーモード
 	constexpr int kColorDepth = 32;
+
+	const char* const kBackgroundGraph = "imagedata/VVVVVVbackground.png";
 
 	// 基準のフォントサイズ
 	constexpr int kFontSize = 60;

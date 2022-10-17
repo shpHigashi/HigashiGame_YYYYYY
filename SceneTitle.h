@@ -8,8 +8,6 @@ public:
 	{
 		m_TextPosY = 0;
 		m_TextVecY = 0;
-		
-		m_angle = 0;
 
 		m_isEnd = false;
 
@@ -20,22 +18,23 @@ public:
 	}
 	virtual ~SceneTitle() {}
 
+	// 初期化
 	virtual void init();
 	
 	// 終了処理
 	void end();
 
+	// 更新処理
 	virtual void update();
+	// 描画
 	virtual void draw();
 
+	// m_isEnd を取得
 	virtual bool isEnd() { return m_isEnd; }
 private:
 	// テキスト表示位置変更
 	int m_TextPosY;
 	int m_TextVecY;
-
-	// テキストの角度
-	float m_angle;
 
 	// タイトル表示を終えるかどうか
 	bool m_isEnd;

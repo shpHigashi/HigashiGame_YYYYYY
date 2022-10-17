@@ -15,17 +15,20 @@ public:
 	}
 	virtual ~SceneClear() {}
 
-
+	// 初期化
 	virtual void init();
 	
 	// 終了処理
 	void end();
-
+	// 更新
 	virtual void update();
+	// 描画
 	virtual void draw();
 
+	// m_isEnd を取得
 	virtual bool isEnd() { return m_isEnd; }
 private:
+	// シーン終了
 	bool m_isEnd;
 
 	// 画像データ

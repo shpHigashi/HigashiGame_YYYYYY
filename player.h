@@ -1,40 +1,47 @@
 #pragma once
 #include "Vec2.h"
 
+// プレイヤークラス
 class Player
 {
 public:
 	Player();
 	virtual ~Player() {}
 
+	// プレイヤーの初期化
 	virtual void init();
+	// プレイヤーの画像セット
 	virtual void setHandle(int playerHandle, int playerDeadHandle);
+	// プレイヤーの座標設定
 	virtual void setPos(float x, float y);
 
+	// プレイヤーの更新処理
 	virtual void update();
+	// プレイヤーの描画処理
 	virtual void draw();
 
+	// プレイヤーの中心座標取得
 	virtual float getCenterX(){ return m_pos.x + (m_height / 2); }
 	virtual float getCenterY(){ return m_pos.y + (m_height / 2); }
-	
-	float getPosX() const { return m_pos.x; }
-	float getPosY() const { return m_pos.y; }
 
+	// m_isDead を true にする
 	virtual void isDead() { m_isDead = true; }
+	// m_isDead を取得
 	virtual bool getIsDead() { return m_isDead; }
 
-	// 当たり判定実装用に四方向の座標を取得する　
+	// 当たり判定用に四方向の座標取得　
 	float getLeft()	const { return m_pos.x; }
 	float getRight()	const { return m_pos.x + static_cast<float>(m_width); }
 	float getTop()	const { return m_pos.y; }
 	float getBottom() const { return m_pos.y + static_cast<float>(m_height); }
 	
+	// プレイヤーの座標取得
 	Vec2 getPos() const { return m_pos; }
 
 private:
 	// 画像データ
-	int m_aliveHandle;
-	int m_deadHandle;
+	int m_aliveHandle;	// 生
+	int m_deadHandle;	// 死
 
 	// 画像サイズ
 	int m_height;

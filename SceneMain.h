@@ -19,47 +19,54 @@ public:
 	void update();
 	// 毎フレームの描画
 	void draw();
-
-	void HitCheck();
+	// 当たり判定チェック処理
+	void checkCollision();
 
 	// 敵の生成
 	void createEnemyRight();
 	void createEnemyLeft();
 
-	virtual bool isGameStop() { return m_isGameStop; }
+	// m_isGameClearを取得
+	virtual bool isGameClear() { return m_isGameClear; }
+	// m_isEndを取得
 	virtual bool isEnd() { return m_isEnd; }
 
 private:
-	static constexpr int kMobMax = 10;
+	// 片側の敵の最大出現数
+	static constexpr int kEnemyMax = 10;
 
 private:
-
-	// キャラクターのグラフィックハンドル
+	// 背景のグラフィックハンドル
 	int m_hBackgroundGraphic;
+	// キャラクターのグラフィックハンドル
 	int m_hPlayerGraphic;
 	int m_hPlayerDeadGraphic;
+	// 敵のグラフィックハンドル
 	int m_hEnemyGraphic;
 
-	// ゲームオーバー文字サイズ
+	// フォントサイズ
 	int m_fontSize;
 
 	// ゲームの制限時間
 	int m_GameTimeRemaining;
+	// ゲームオーバー時の遅延時間
 	int m_GameOverDelay;
-	// 
-	int m_waitFrame;
+	// 敵の出現遅延
+	int m_spawnDelay;
 
 	// 乱数取得用変数
 	int m_randNum;
 
-	// ゲーム終了
-	bool m_isGameStop;
+	// ゲームクリア
+	bool m_isGameClear;
+
+	// シーン終了
 	bool m_isEnd;
 
 	// プレイヤー
 	Player m_player;
 
 	// 敵
-	EnemyRight m_EnemyRight[kMobMax];
-	EnemyLeft m_EnemyLeft[kMobMax];
+	EnemyRight m_EnemyRight[kEnemyMax];
+	EnemyLeft m_EnemyLeft[kEnemyMax];
 };
