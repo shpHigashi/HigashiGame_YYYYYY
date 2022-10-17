@@ -11,7 +11,7 @@ namespace
 	// 死亡時の遅延
 	constexpr int kGameOverDelay = 90;
 	// ゲームオーバー
-	const char* const kGameOver = "Game Over";
+	const char* const kGameOver = "GameOver";
 	constexpr int kFontSize = 60;
 
 	// 制限時間表示位置
@@ -38,7 +38,6 @@ SceneMain::SceneMain()
 }
 SceneMain::~SceneMain()
 {
-
 }
 
 // 初期化
@@ -46,7 +45,7 @@ void SceneMain::init()
 {
 	// 画像データの読み込み
 	m_hBackgroundGraphic = LoadGraph(Game::kBackgroundGraph);
-	m_hPlayerGraphic = LoadGraph("imagedata/player.png");
+	m_hPlayerGraphic = LoadGraph(Game::kPlayerGraph);
 	m_hPlayerDeadGraphic = LoadGraph("imagedata/playerDead.png");
 	m_hEnemyGraphic = LoadGraph("imagedata/enemy.png");
 

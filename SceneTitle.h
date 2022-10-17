@@ -1,5 +1,6 @@
 #pragma once
 #include "SceneBase.h"
+#include "TitleChara.h"
 
 class SceneTitle : public SceneBase
 {
@@ -12,6 +13,7 @@ public:
 		m_isEnd = false;
 
 		m_handle = -1;
+		m_hPlayerGraphic = -1;
 
 		m_width = 0;
 		m_height = 0;
@@ -31,7 +33,7 @@ public:
 
 	// m_isEnd を取得
 	virtual bool isEnd() { return m_isEnd; }
-private:
+private:	
 	// テキスト表示位置変更
 	int m_TextPosY;
 	int m_TextVecY;
@@ -41,7 +43,11 @@ private:
 
 	// 画像データ
 	int m_handle;
+	int m_hPlayerGraphic;
 	// 画像サイズ
 	int m_width;
 	int m_height;
+
+	// プレイヤー
+	TitleChara m_tChara;
 };

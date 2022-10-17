@@ -4,8 +4,6 @@
 
 namespace
 {
-	// ゲームタイトル
-	const char* const kGameTitle = "YYYYYY";
 }
 
 // 初期化

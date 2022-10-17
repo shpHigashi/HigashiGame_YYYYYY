@@ -12,6 +12,14 @@ namespace
 // 初期化
 void SceneTitle::init()
 {
+	// 画像のロード
+	m_hPlayerGraphic = LoadGraph(Game::kPlayerGraph);
+	m_tChara.setHandle(m_hPlayerGraphic);
+	// キャラの初期位置設定
+	m_tChara.setPos(Game::kScreenWidthHalf, Game::kScreenHeightHalf);
+	// キャラ初期化 
+	m_tChara.init();
+
 	// テキスト座標を初期化
 	m_TextPosY = 0;
 	m_TextVecY = 4;
@@ -29,11 +37,15 @@ void SceneTitle::end()
 {
 	// 画像データ削除
 	DeleteGraph(m_handle);
+	DeleteGraph(m_hPlayerGraphic);
 }
 
 // 更新処理
 void SceneTitle::update()
 {	
+	// キャラの更新処理
+	m_tChara.update();
+
 	// 文字の移動
 	m_TextPosY += m_TextVecY;
 	
@@ -62,6 +74,9 @@ void SceneTitle::draw()
 {
 	// 背景画像を読み込んで表示
 	LoadGraphScreen(0, 0, Game::kBackgroundGraph, true);
+
+	// キャラの描画
+	m_tChara.draw();
 	
 	// ゲームタイトルの画像表示
 	DrawGraph(0, m_TextPosY, m_handle, true);
