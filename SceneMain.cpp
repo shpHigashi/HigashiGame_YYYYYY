@@ -109,12 +109,6 @@ void SceneMain::update()
 	// プレイヤーの死亡判定が true の場合
 	if (m_player.getIsDead())
 	{
-		// 1フレームごとにフォントサイズを増加させる
-		m_fontSize++;
-		SetFontSize(m_fontSize);
-		// ゲームオーバーのテキストを表示
-		DrawString(Game::kScreenWidthHalf - GetDrawStringWidth(kGameOver, 4), 210, kGameOver, GetColor(255, 0, 0));
-		
 		// ゲームオーバー遅延を1フレームごとに減少させる
 		m_GameOverDelay--;
 
@@ -179,6 +173,16 @@ void SceneMain::draw()
 	if (m_gameTimeRemaining >= 600) DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 255, 255), "%d", m_gameTimeRemaining / 60);
 	else if (m_gameTimeRemaining >= 300) DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 216, 0), "%d", m_gameTimeRemaining / 60);
 	else DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 0, 0), "%d", m_gameTimeRemaining / 60);
+
+	// プレイヤーの死亡判定が true の場合
+	if (m_player.getIsDead())
+	{
+		// 1フレームごとにフォントサイズを増加させる
+		m_fontSize++;
+		SetFontSize(m_fontSize);
+		// ゲームオーバーのテキストを表示
+		DrawString(Game::kScreenWidthHalf - GetDrawStringWidth(kGameOver, 4), 210, kGameOver, GetColor(255, 0, 0));
+	}
 }
 
 // 当たり判定チェック処理
