@@ -12,9 +12,16 @@ namespace
 // 初期化
 void SceneTitle::init()
 {
-	// 画像のロード
-	m_hPlayerGraphic = LoadGraph(Game::kPlayerGraph);
-	m_tChara.setHandle(m_hPlayerGraphic);
+	// 画像データの読み込み
+	// ゲームタイトル
+	m_hGameLogo = LoadGraph("imagedata/VVVVVV_logo.png");
+	GetGraphSize(m_hGameLogo, &m_width, &m_height);
+	// 背景画像
+	m_hBackgroundGraphic = LoadGraph(Game::kBackgroundGraph);
+	
+	// キャラクター画像
+	m_hCharaGraphic = LoadGraph(Game::kPlayerGraph);
+	m_tChara.setHandle(m_hCharaGraphic);
 	// キャラの初期位置設定
 	m_tChara.setPos(Game::kScreenWidthHalf, Game::kScreenHeightHalf);
 	// キャラ初期化 
@@ -27,17 +34,15 @@ void SceneTitle::init()
 	// シーン終了に false を代入
 	m_isEnd = false;
 
-	// 画像データの読み込み
-	m_handle = LoadGraph("imagedata/VVVVVV_logo.png");
-	GetGraphSize(m_handle, &m_width, &m_height);
 }
 
 // 終了処理
 void SceneTitle::end()
 {
 	// 画像データ削除
-	DeleteGraph(m_handle);
-	DeleteGraph(m_hPlayerGraphic);
+	DeleteGraph(m_hGameLogo);
+	DeleteGraph(m_hCharaGraphic);
+	DeleteGraph(m_hBackgroundGraphic);
 }
 
 // 更新処理
@@ -73,16 +78,16 @@ void SceneTitle::update()
 void SceneTitle::draw()
 {
 	// 背景画像を読み込んで表示
-	LoadGraphScreen(0, 0, Game::kBackgroundGraph, true);
+	DrawGraph(0, 0, m_hBackgroundGraphic, true);
 
 	// キャラの描画
 	m_tChara.draw();
 	
 	// ゲームタイトルの画像表示
-	DrawGraph(0, m_TextPosY, m_handle, true);
-	DrawGraph(Game::kScreenWidth - m_width, m_TextPosY, m_handle, true);
+	DrawGraph(0, m_TextPosY, m_hGameLogo, true);
+	DrawGraph(Game::kScreenWidth - m_width, m_TextPosY, m_hGameLogo, true);
 
-	DrawRotaGraphF(Game::kScreenWidthHalf, Game::kScreenHeight / 3, 1.5, 0, m_handle, true, false);
+	DrawRotaGraphF(Game::kScreenWidthHalf, Game::kScreenHeight / 3, 1.5, 0, m_hGameLogo, true, false);
 
 	// フォントサイズの設定
 	SetFontSize(30);

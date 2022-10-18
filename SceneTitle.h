@@ -12,8 +12,9 @@ public:
 
 		m_isEnd = false;
 
-		m_handle = -1;
-		m_hPlayerGraphic = -1;
+		m_hGameLogo = -1;
+		m_hCharaGraphic = -1;
+		m_hBackgroundGraphic = -1;
 
 		m_width = 0;
 		m_height = 0;
@@ -42,8 +43,9 @@ private:
 	bool m_isEnd;
 
 	// 画像データ
-	int m_handle;
-	int m_hPlayerGraphic;
+	int m_hGameLogo;
+	int m_hCharaGraphic;
+	int m_hBackgroundGraphic;
 	// 画像サイズ
 	int m_width;
 	int m_height;

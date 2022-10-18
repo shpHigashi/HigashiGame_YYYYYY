@@ -12,16 +12,18 @@ void SceneClear::init()
 	m_isEnd = false;
 
 	// 画像の読み込み
-	m_handle = LoadGraph("imagedata/GameClear.png");
+	m_hClearTextGraphic = LoadGraph("imagedata/GameClear.png");
+	m_hBackgroundGraphic = LoadGraph(Game::kBackgroundGraph);
 	// 画像サイズの取得
-	GetGraphSize(m_handle, &m_width, &m_height);
+	GetGraphSize(m_hClearTextGraphic, &m_width, &m_height);
 }
 
 // 終了処理
 void SceneClear::end()
 {
 	// 画像データの削除
-	DeleteGraph(m_handle);
+	DeleteGraph(m_hClearTextGraphic);
+	DeleteGraph(m_hBackgroundGraphic);
 }
 
 // 更新
@@ -39,8 +41,8 @@ void SceneClear::update()
 void SceneClear::draw()
 {
 	// 背景画像の描画
-	LoadGraphScreen(0, 0, Game::kBackgroundGraph, true);
+	DrawGraph(0, 0, m_hBackgroundGraphic, true);
 
 	// クリアテキスト画像の表示
-	DrawRotaGraphF(Game::kScreenWidthHalf, Game::kScreenHeightHalf, 1.5, 0, m_handle, true, false);
+	DrawRotaGraphF(Game::kScreenWidthHalf, Game::kScreenHeightHalf, 1.5, 0, m_hClearTextGraphic, true, false);
 }

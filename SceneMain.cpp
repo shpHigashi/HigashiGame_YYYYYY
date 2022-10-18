@@ -8,6 +8,7 @@ namespace
 	constexpr int kSpawnDelay = 80;
 	// ゲームの制限時間
 	constexpr int kGameMaxTime = 1800;
+	constexpr int kGameMaxTimeExpert = 3600;
 	// 死亡時の遅延
 	constexpr int kGameOverDelay = 90;
 	// ゲームオーバー
