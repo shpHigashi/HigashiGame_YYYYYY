@@ -6,6 +6,8 @@ namespace
 {
     // 基本移動速度
     constexpr float kMoveSpeed = 6.0f;
+    // 敵の初期化位置
+    constexpr float kSetPos = 0.0f;
     // 敵の移動速度の下限、上限
     constexpr int kSpeedLimitMax = 10;
     constexpr int kSpeedLimitMin = 5;
@@ -29,6 +31,10 @@ EnemyBase::EnemyBase()
 void EnemyBase::init()
 {
     m_vec.x = kMoveSpeed;
+    m_vec.y = 0.0f;
+    
+    m_pos.x = kSetPos;
+    m_pos.y = kSetPos;
 
     m_isExist = false;
 }
