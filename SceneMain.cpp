@@ -5,9 +5,9 @@
 namespace
 {
 	// 敵出現用の遅延時間
-	constexpr int kSpawnDelay = 80;
+	constexpr int kSpawnDelay = 90;
 	// ゲームの制限時間
-	constexpr int kGameMaxTime = 1800;
+	constexpr int kGameMaxTime = 900;	
 	// 死亡時の遅延
 	constexpr int kGameOverDelay = 90;
 	// ゲームオーバー
@@ -107,7 +107,7 @@ void SceneMain::update()
 	}							// タイトルへ戻る
 
 	// プレイヤーの死亡判定が true の場合
-	if (m_player.getIsDead())
+	if (m_player.isDead())
 	{
 		// ゲームオーバー遅延を1フレームごとに減少させる
 		m_GameOverDelay--;
@@ -169,13 +169,13 @@ void SceneMain::draw()
 
 	// フォントサイズ設定
 	SetFontSize(Game::kFontSize);
-	// ゲームの制限時間表示 (通常は白文字、残り10秒を過ぎると黄色文字、5秒を過ぎると赤文字で表示される)
-	if (m_gameTimeRemaining >= 600) DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 255, 255), "%d", m_gameTimeRemaining / 60);
-	else if (m_gameTimeRemaining >= 300) DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 216, 0), "%d", m_gameTimeRemaining / 60);
-	else DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 0, 0), "%d", m_gameTimeRemaining / 60);
+	// ゲームの制限時間表示 (通常は白文字、合計時間の半分を過ぎると黄色文字、5秒を過ぎると赤文字で表示される)
+	if (m_gameTimeRemaining <= kGameMaxTime / 4) DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 0, 0), "%d", m_gameTimeRemaining / 60);
+	else if (m_gameTimeRemaining <= kGameMaxTime / 2) DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 216, 0), "%d", m_gameTimeRemaining / 60);
+	else DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 255, 255), "%d", m_gameTimeRemaining / 60);
 
 	// プレイヤーの死亡判定が true の場合
-	if (m_player.getIsDead())
+	if (m_player.isDead())
 	{
 		// 1フレームごとにフォントサイズを増加させる
 		m_fontSize++;
@@ -191,22 +191,22 @@ void SceneMain::checkCollision()
 	for (auto& EnemyLeft : m_EnemyLeft)
 	{
 		// 当たっていない場合処理をスキップ
-		if (EnemyLeft.getRight() < m_player.getLeft()) continue;
-		if (m_player.getRight() < EnemyLeft.getLeft()) continue;
-		if (EnemyLeft.getBottom() < m_player.getTop()) continue;
-		if (m_player.getBottom() < EnemyLeft.getTop()) continue;
+		if (EnemyLeft.getRight() <= m_player.getLeft()) continue;
+		if (m_player.getRight() <= EnemyLeft.getLeft()) continue;
+		if (EnemyLeft.getBottom() <= m_player.getTop()) continue;
+		if (m_player.getBottom() <= EnemyLeft.getTop()) continue;
 		// 当たっている場合プレイヤーを死亡判定にする
-		m_player.isDead();
+		m_player.setDead();
 	}
 	for (auto& EnemyRight : m_EnemyRight)
 	{
 		// 当たっていない場合処理をスキップ
-		if (EnemyRight.getRight() < m_player.getLeft()) continue;
-		if (m_player.getRight() < EnemyRight.getLeft()) continue;
-		if (EnemyRight.getBottom() < m_player.getTop()) continue;
-		if (m_player.getBottom() < EnemyRight.getTop()) continue;
+		if (EnemyRight.getRight() <= m_player.getLeft()) continue;
+		if (m_player.getRight() <= EnemyRight.getLeft()) continue;
+		if (EnemyRight.getBottom() <= m_player.getTop()) continue;
+		if (m_player.getBottom() <= EnemyRight.getTop()) continue;
 		// 当たっている場合プレイヤーを死亡判定にする
-		m_player.isDead();
+		m_player.setDead();
 	}
 }
 

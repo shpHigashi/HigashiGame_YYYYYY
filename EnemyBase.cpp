@@ -9,8 +9,8 @@ namespace
     // “G‚Ì‰Šú‰»ˆÊ’u
     constexpr float kSetPos = 0.0f;
     // “G‚ÌˆÚ“®‘¬“x‚Ì‰ºŒÀAãŒÀ
-    constexpr int kSpeedLimitMax = 10;
-    constexpr int kSpeedLimitMin = 5;
+    constexpr int kSpeedLimitMax = 15;
+    constexpr int kSpeedLimitMin = 2;
 }
 
 EnemyBase::EnemyBase()
@@ -68,4 +68,5 @@ void EnemyBase::update()
 void EnemyBase::draw()
 {
     DrawRotaGraphF(getCenterX(), getCenterY(), 1.0, m_angle, m_handle, true, false);
+    DrawBox(getLeft(), getTop(), getRight(), getBottom(), GetColor(255, 255, 255), false);
 }

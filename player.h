@@ -21,13 +21,13 @@ public:
 	virtual void draw();
 
 	// プレイヤーの中心座標取得
-	virtual float getCenterX(){ return m_pos.x + (m_height / 2); }
+	virtual float getCenterX(){ return m_pos.x + (m_width / 2); }
 	virtual float getCenterY(){ return m_pos.y + (m_height / 2); }
 
 	// m_isDead を true にする
-	virtual void isDead() { m_isDead = true; }
+	virtual void setDead() { m_isDead = true; }
 	// m_isDead を取得
-	virtual bool getIsDead() { return m_isDead; }
+	virtual bool isDead() { return m_isDead; }
 
 	// 当たり判定用に四方向の座標取得　
 	float getLeft()	const { return m_pos.x; }

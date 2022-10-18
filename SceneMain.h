@@ -5,7 +5,7 @@
 #include "EnemyLeft.h"
 
 class SceneMain
-{
+{//
 public:
 	SceneMain();
 	virtual ~SceneMain();
