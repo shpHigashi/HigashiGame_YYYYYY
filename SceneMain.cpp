@@ -8,7 +8,6 @@ namespace
 	constexpr int kSpawnDelay = 80;
 	// ゲームの制限時間
 	constexpr int kGameMaxTime = 1800;
-	constexpr int kGameMaxTimeExpert = 3600;
 	// 死亡時の遅延
 	constexpr int kGameOverDelay = 90;
 	// ゲームオーバー
@@ -28,7 +27,6 @@ SceneMain::SceneMain()
 	m_hEnemyGraphic = -1;
 
 	m_spawnDelay = 0;
-	m_randNum = 0;
 	m_fontSize = 0;
 
 	m_gameTimeRemaining = kGameMaxTime;
@@ -108,7 +106,7 @@ void SceneMain::update()
 		m_isEnd = true;			// シーン終了のみを true にする			
 	}							// タイトルへ戻る
 
-	// プレイヤーの死亡判定が 真 の場合
+	// プレイヤーの死亡判定が true の場合
 	if (m_player.getIsDead())
 	{
 		// 1フレームごとにフォントサイズを増加させる

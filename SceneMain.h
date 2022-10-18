@@ -54,9 +54,6 @@ private:
 	// 敵の出現遅延
 	int m_spawnDelay;
 
-	// 乱数取得用変数
-	int m_randNum;
-
 	// ゲームクリア
 	bool m_isGameClear;
 

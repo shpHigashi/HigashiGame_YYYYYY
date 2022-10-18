@@ -9,7 +9,8 @@ namespace
     // 敵の初期化座標
     constexpr float kSetEnemy = 0.0f;
     // 敵の移動速度の下限、上限
-    constexpr int kSpeedLimit = 5;
+    constexpr int kSpeedLimitMax = 10;
+    constexpr int kSpeedLimitMin = 5;
 }
 
 EnemyBase::EnemyBase()
@@ -51,7 +52,7 @@ void EnemyBase::start(Vec2 pos)
 {
     m_isExist = true;
     m_pos = pos;
-    m_vec.x = static_cast<float>(GetRand(kSpeedLimit + kSpeedLimit)) + kSpeedLimit;
+    m_vec.x = static_cast<float>(GetRand(kSpeedLimitMax)) + kSpeedLimitMin;
 }
 
 // 敵の更新処理

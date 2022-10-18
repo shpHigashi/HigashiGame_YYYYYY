@@ -86,7 +86,7 @@ void TitleChara::update()
 // プレイヤーの描画処理
 void TitleChara::draw()
 {
-    // 左右、上下の反転、死亡時のプレイヤーでそれぞれ描画する
+    // 左右、上下の反転でそれぞれ描画する
     if (m_isReverseSide && m_isReverseLength)
     {
         DrawRotaGraphF(m_pos.x + kPlayerDrawPosX, m_pos.y + kPlayerDrawPosY, 1.0, DX_PI, m_playerHandle, true, false);
