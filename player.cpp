@@ -134,5 +134,4 @@ void Player::draw()
     {
         DrawGraphF(m_pos.x, m_pos.y, m_aliveHandle, true);
     }
-    //DrawBox(getLeft(), getTop(), getRight(), getBottom(), GetColor(255, 255, 255), false);
 }

@@ -33,7 +33,7 @@ SceneMain::SceneMain()
 	m_GameOverDelay = kGameOverDelay;
 
 	m_isGameClear = false;
-	m_isEnd = false;
+	m_isEnd = false; 
 }
 SceneMain::~SceneMain()
 {
@@ -162,7 +162,7 @@ void SceneMain::draw()
 	// ‘¶İ‚µ‚Ä‚¢‚é“G‚Ì‚İ•`‰æ
 	for (auto& EnemyLeft : m_EnemyLeft)
 	{
-		if(EnemyLeft.isExist()) EnemyLeft.draw();
+		if (EnemyLeft.isExist()) EnemyLeft.draw();
 	}
 	for (auto& EnemyRight : m_EnemyRight)
 	{

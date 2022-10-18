@@ -31,7 +31,7 @@ void SceneClear::update()
 {
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 	
-	// キー入力があった場合シーン終了を 真 にする
+	// キー入力があった場合シーン終了を true にする
 	if (padState & PAD_INPUT_1)
 	{
 		m_isEnd = true;
