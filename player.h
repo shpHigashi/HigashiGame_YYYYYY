@@ -50,9 +50,6 @@ private:
 	// 表示位置
 	Vec2 m_pos;
 
-	// 中心位置
-	Vec2 m_midPos;
-
 	// 移動量
 	Vec2 m_vec;
 
