@@ -86,14 +86,20 @@ void TitleChara::update()
 // ƒvƒŒƒCƒ„[‚Ì•`‰æˆ—
 void TitleChara::draw()
 {
+    // •`‰æŠp“x—p•Ï”
     double angle = 0;
+    // •`‰æ¶‰E”½“]—p•Ï”
     bool isReverseSide = m_isReverseSide;
     if (m_isReverseLength)
     {
+        // ã‰º”½“]‚·‚éê‡AŠp“x‚ğ‘ã“ü
         angle = DX_PI;
+
+        // ã‰º”½“]‚·‚éê‡A¶‰E”½“]‚ğ‹t‚É“ü‚ê‘Ö‚¦‚é
         if (isReverseSide) isReverseSide = false;
         else isReverseSide = true;
     }
 
+    // ”wŒiƒLƒƒƒ‰ƒNƒ^[•`‰æ
     DrawRotaGraphF(m_pos.x + kPlayerDrawPosX, m_pos.y + kPlayerDrawPosY, 1.0, angle, m_playerHandle, true, isReverseSide);
 }

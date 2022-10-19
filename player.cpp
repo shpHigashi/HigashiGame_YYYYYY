@@ -101,20 +101,27 @@ void Player::update()
 // プレイヤーの描画処理
 void Player::draw()
 {
+    // 描画用グラフィックハンドル
     int handle = m_aliveHandle;
-    if (m_isDead)
+    if (m_isDead)   // プレイヤーが死亡している場合、画像データ変更
     {
         handle = m_deadHandle;
     }
 
+    // 描画角度用変数
     double angle = 0.0;
+    // 描画左右反転用変数
     bool isReverseSide = m_isReverseSide;
-    if (m_isReverseLength)
+    if (m_isReverseLength)  
     {
+        // 上下反転する場合、角度を代入
         angle = DX_PI;
+        
+        // 上下反転する場合、左右反転を逆に入れ替える
         if (isReverseSide) isReverseSide = false;
         else isReverseSide = true;
     }
     
+    // プレイヤー描画
     DrawRotaGraphF(m_pos.x + kPlayerDrawPosX, m_pos.y + kPlayerDrawPosY, 1.0, angle, handle, true, isReverseSide);
 }
