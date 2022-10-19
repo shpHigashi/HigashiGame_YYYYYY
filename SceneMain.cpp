@@ -7,7 +7,7 @@ namespace
 	// 敵出現用の遅延時間
 	constexpr int kSpawnDelay = 90;
 	// ゲームの制限時間
-	constexpr int kGameMaxTime = 1800;	
+	constexpr int kGameMaxTime = 1200;	
 	// 死亡時の遅延
 	constexpr int kGameOverDelay = 90;
 	// ゲームオーバー
