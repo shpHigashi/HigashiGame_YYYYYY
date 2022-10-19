@@ -107,7 +107,7 @@ void Player::draw()
         handle = m_deadHandle;
     }
 
-    double angle = 0;
+    double angle = 0.0;
     bool isReverseSide = m_isReverseSide;
     if (m_isReverseLength)
     {
