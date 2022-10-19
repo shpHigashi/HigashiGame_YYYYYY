@@ -23,6 +23,8 @@ SceneMain::SceneMain()
 {
 	m_revSound = -1;
 	m_deathSound = -1;
+
+	m_playOnceOnly = false;
 	
 	m_hBackgroundGraphic = -1;
 	m_hPlayerGraphic = -1;
