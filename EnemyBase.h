@@ -21,7 +21,7 @@ public:
 	virtual void draw();
 
 	// 敵の中心座標取得
-	virtual float getCenterX() { return m_pos.x + (m_height / 2); }
+	virtual float getCenterX() { return m_pos.x + (m_width / 2); }
 	virtual float getCenterY() { return m_pos.y + (m_height / 2); }
 
 	// 当たり判定用に四方向の座標取得　

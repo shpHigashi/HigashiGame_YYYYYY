@@ -7,7 +7,7 @@ namespace
 	// 敵出現用の遅延時間
 	constexpr int kSpawnDelay = 90;
 	// ゲームの制限時間
-	constexpr int kGameMaxTime = 900;	
+	constexpr int kGameMaxTime = 1800;	
 	// 死亡時の遅延
 	constexpr int kGameOverDelay = 90;
 	// ゲームオーバー
@@ -170,7 +170,7 @@ void SceneMain::draw()
 	// フォントサイズ設定
 	SetFontSize(Game::kFontSize);
 	// ゲームの制限時間表示 (通常は白文字、合計時間の半分を過ぎると黄色文字、5秒を過ぎると赤文字で表示される)
-	if (m_gameTimeRemaining <= kGameMaxTime / 4) DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 0, 0), "%d", m_gameTimeRemaining / 60);
+	if (m_gameTimeRemaining <= 300) DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 0, 0), "%d", m_gameTimeRemaining / 60);
 	else if (m_gameTimeRemaining <= kGameMaxTime / 2) DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 216, 0), "%d", m_gameTimeRemaining / 60);
 	else DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 255, 255), "%d", m_gameTimeRemaining / 60);
 
