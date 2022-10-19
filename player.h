@@ -12,6 +12,8 @@ public:
 	virtual void init();
 	// プレイヤーの画像セット
 	virtual void setHandle(int playerHandle, int playerDeadHandle);
+	// プレイヤーの音データセット
+	virtual void setSound(int revSound);
 	// プレイヤーの座標設定
 	virtual void setPos(float x, float y);
 
@@ -39,6 +41,10 @@ public:
 	Vec2 getPos() const { return m_pos; }
 
 private:
+	// 音データ
+	int m_revSound;
+	int m_deathSound;
+	
 	// 画像データ
 	int m_aliveHandle;	// 生
 	int m_deadHandle;	// 死

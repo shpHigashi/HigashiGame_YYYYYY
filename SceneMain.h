@@ -36,6 +36,13 @@ private:
 	static constexpr int kEnemyMax = 10;
 
 private:
+	// 音楽データ
+	int m_backgroundSound;
+	int m_revSound;
+	int m_deathSound;
+	// 一度だけ再生
+	bool m_playOnceOnly;
+	
 	// 背景のグラフィックハンドル
 	int m_hBackgroundGraphic;
 	// キャラクターのグラフィックハンドル

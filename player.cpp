@@ -14,8 +14,12 @@ namespace
 
 Player::Player()
 {
+    m_revSound = -1;
+    m_deathSound = -1;
+    
     m_aliveHandle = -1;
     m_deadHandle = -1;
+
     m_height = 0;
     m_width = 0;
 
@@ -44,6 +48,11 @@ void Player::setHandle(int playerHandle, int playerDeadHandle)
     
     // 画像サイズの取得
     GetGraphSize(m_aliveHandle, &m_width, &m_height);
+}
+
+void Player::setSound(int revSound)
+{
+    m_revSound = revSound;
 }
 
 // プレイヤーの座標設定
@@ -89,12 +98,18 @@ void Player::update()
         m_pos.y = Game::kStageUpperLimit;   // ステージの範囲より上には行かない
         m_vec.y *= -1;                      // 重力変更
         m_isReverseLength = false;          // 画像反転しない
+
+        // 反転時の音を再生
+        PlaySoundMem(m_revSound, DX_PLAYTYPE_BACK);
     }
     if (getBottom() > Game::kStageLowerLimit)
     {
         m_pos.y = static_cast<float>(Game::kStageLowerLimit - m_height);    // ステージの範囲より下には行かない
         m_vec.y *= -1;                      // 重力変更
         m_isReverseLength = true;           // 画像反転する
+
+        // 反転時の音を再生
+        PlaySoundMem(m_revSound, DX_PLAYTYPE_BACK);
     }
 }
 

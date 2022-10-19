@@ -21,6 +21,10 @@ namespace
 
 SceneMain::SceneMain()
 {
+	m_backgroundSound = -1;
+	m_revSound = -1;
+	m_deathSound = -1;
+	
 	m_hBackgroundGraphic = -1;
 	m_hPlayerGraphic = -1;
 	m_hPlayerDeadGraphic = -1;
@@ -42,14 +46,24 @@ SceneMain::~SceneMain()
 // 初期化
 void SceneMain::init()
 {
+	// 音データ
+	m_backgroundSound = LoadSoundMem("sounddata/Positive Force.mp3");
+	//PlaySoundMem(m_backgroundSound, DX_PLAYTYPE_BACK);
+	m_revSound = LoadSoundMem("sounddata/blip.wav");
+	m_deathSound = LoadSoundMem("sounddata/hurt.wav");
+
+	// 一度だけ再生
+	m_playOnceOnly = false;
+
 	// 画像データの読み込み
 	m_hBackgroundGraphic = LoadGraph(Game::kBackgroundGraph);
 	m_hPlayerGraphic = LoadGraph(Game::kPlayerGraph);
 	m_hPlayerDeadGraphic = LoadGraph("imagedata/playerDead.png");
 	m_hEnemyGraphic = LoadGraph("imagedata/enemy.png");
 
-	// プレイヤー画像の設定
+	// プレイヤー画像と音の設定
 	m_player.setHandle(m_hPlayerGraphic, m_hPlayerDeadGraphic);
+	m_player.setSound(m_revSound);
 
 	// 敵の画像設定、初期化
 	for (auto& EnemyLeft : m_EnemyLeft)
@@ -83,6 +97,11 @@ void SceneMain::init()
 // 終了処理
 void SceneMain::end()
 {
+	// 音楽データの削除
+	DeleteSoundMem(m_backgroundSound);
+	DeleteSoundMem(m_revSound);
+	DeleteSoundMem(m_deathSound);
+	
 	// 画像データの削除
 	DeleteGraph(m_hBackgroundGraphic);
 	DeleteGraph(m_hPlayerGraphic);
@@ -109,6 +128,11 @@ void SceneMain::update()
 	// プレイヤーの死亡判定が true の場合
 	if (m_player.isDead())
 	{
+		if (!m_playOnceOnly)
+		{
+			PlaySoundMem(m_deathSound, DX_PLAYTYPE_BACK);
+			m_playOnceOnly = true;
+		}
 		// ゲームオーバー遅延を1フレームごとに減少させる
 		m_GameOverDelay--;
 
