@@ -21,7 +21,6 @@ namespace
 
 SceneMain::SceneMain()
 {
-	m_backgroundSound = -1;
 	m_revSound = -1;
 	m_deathSound = -1;
 	
@@ -47,8 +46,6 @@ SceneMain::~SceneMain()
 void SceneMain::init()
 {
 	// 音データ
-	m_backgroundSound = LoadSoundMem("sounddata/Positive Force.mp3");
-	//PlaySoundMem(m_backgroundSound, DX_PLAYTYPE_BACK);
 	m_revSound = LoadSoundMem("sounddata/blip.wav");
 	m_deathSound = LoadSoundMem("sounddata/hurt.wav");
 
@@ -98,7 +95,6 @@ void SceneMain::init()
 void SceneMain::end()
 {
 	// 音楽データの削除
-	DeleteSoundMem(m_backgroundSound);
 	DeleteSoundMem(m_revSound);
 	DeleteSoundMem(m_deathSound);
 	

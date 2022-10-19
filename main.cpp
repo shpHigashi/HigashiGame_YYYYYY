@@ -42,12 +42,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		scene.draw();
 
 		// ゲーム終了判定
-		isGameEnd = scene.getIsGameEnd();
-		// isGameEndが真の場合ループ終了
-		if (isGameEnd)
-		{
-			break;
-		}
+		//isGameEnd = scene.isGameEnd();
 
 		// 裏画面を表画面と入れ替える
 		ScreenFlip();

@@ -7,7 +7,7 @@ SceneManager::SceneManager()
 	m_kind = kSceneKindTitle;
 
 	// ƒQ[ƒ€I—¹
-	m_isGameEnd = false;
+	m_isMusicEnd = false;
 }
 SceneManager::~SceneManager()
 {

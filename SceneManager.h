@@ -32,11 +32,11 @@ public:
 	void draw();
 
 	// m_isGameEnd ‚ğæ“¾
-	bool getIsGameEnd() { return m_isGameEnd; }
+	bool isGameEnd() { return m_isMusicEnd; }
 
 private:
 	// ƒQ[ƒ€I—¹
-	bool m_isGameEnd;
+	bool m_isMusicEnd;
 	
 	SceneKind	m_kind;
 

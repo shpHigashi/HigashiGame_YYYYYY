@@ -16,6 +16,10 @@ void SceneClear::init()
 	
 	m_isEnd = false;
 
+	// 音データの読み込み
+	m_clearSound = LoadSoundMem("sounddata/stageclear.wav");
+	PlaySoundMem(m_clearSound, DX_PLAYTYPE_BACK);
+
 	// 画像の読み込み
 	m_hClearTextGraphic = LoadGraph("imagedata/GameClear.png");
 	m_hBackgroundGraphic = LoadGraph(Game::kBackgroundGraph);
@@ -26,6 +30,9 @@ void SceneClear::init()
 // 終了処理
 void SceneClear::end()
 {
+	// 音データの削除
+	DeleteSoundMem(m_clearSound);
+
 	// 画像データの削除
 	DeleteGraph(m_hClearTextGraphic);
 	DeleteGraph(m_hBackgroundGraphic);

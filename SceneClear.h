@@ -10,6 +10,8 @@ public:
 		
 		m_isEnd = false;
 
+		m_clearSound = -1;
+
 		m_hClearTextGraphic = -1;
 		m_hBackgroundGraphic = -1;
 
@@ -36,6 +38,9 @@ private:
 	
 	// シーン終了
 	bool m_isEnd;
+
+	// 音データ
+	int m_clearSound;
 
 	// 画像データ
 	int m_hClearTextGraphic;

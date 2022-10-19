@@ -36,8 +36,7 @@ private:
 	static constexpr int kEnemyMax = 10;
 
 private:
-	// 音楽データ
-	int m_backgroundSound;
+	// 音データ
 	int m_revSound;
 	int m_deathSound;
 	// 一度だけ再生
