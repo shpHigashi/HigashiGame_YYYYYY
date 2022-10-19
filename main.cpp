@@ -28,12 +28,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	// 画像のロード
 	scene.init();
 
+	int backgroundSound = -1;
+	backgroundSound = LoadSoundMem(Game::kGameMainMusic);
+
 	while (ProcessMessage() == 0)
 	{
 		LONGLONG time = GetNowHiPerformanceCount();
 
 		// 画面のクリア
 		ClearDrawScreen();
+
+		if(!CheckSoundMem(backgroundSound)) PlaySoundMem(backgroundSound, DX_PLAYTYPE_BACK);
 
 		// 現在のシーンの更新
 		scene.update();
@@ -42,7 +47,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		scene.draw();
 
 		// ゲーム終了判定
-		//isGameEnd = scene.isGameEnd();
+		isGameEnd = scene.isGameEnd();
+		// isGameEndが真の場合ループ終了
+		if (isGameEnd)
+		{
+			StopSoundMem(backgroundSound);
+		}
 
 		// 裏画面を表画面と入れ替える
 		ScreenFlip();
@@ -57,6 +67,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	// 画像のアンロード
 	scene.end();
+	DeleteSoundMem(backgroundSound);
 
 	DxLib_End();				// ＤＸライブラリ使用の終了処理
 

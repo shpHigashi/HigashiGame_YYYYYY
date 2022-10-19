@@ -98,6 +98,7 @@ void SceneManager::update()
 			// m_isGameClear が true の場合、ゲームクリアのシーンを初期化し選択
 			if (m_main.isGameClear())
 			{
+				m_isMusicEnd = true;
 				m_main.end();	// シーンメインのデータ削除
 				m_clear.init();	// シーンクリアの初期化
 				m_kind = kSceneKindClear;
@@ -111,6 +112,7 @@ void SceneManager::update()
 				break;
 			}
 		case SceneManager::kSceneKindClear:	// シーンがゲームクリアの場合、ゲーム終了
+			m_isMusicEnd = false;
 			m_clear.end();	// シーンクリアのデータ削除
 			m_title.init();	// シーンタイトルの初期化
 			m_kind = kSceneKindTitle;
