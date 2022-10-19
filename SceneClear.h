@@ -6,6 +6,8 @@ class SceneClear : public SceneBase
 public:
 	SceneClear()
 	{
+		titleDelay = 0;
+		
 		m_isEnd = false;
 
 		m_hClearTextGraphic = -1;
@@ -29,6 +31,9 @@ public:
 	// m_isEnd を取得
 	virtual bool isEnd() { return m_isEnd; }
 private:
+	// タイトル表示までの遅延用変数
+	int titleDelay;
+	
 	// シーン終了
 	bool m_isEnd;
 

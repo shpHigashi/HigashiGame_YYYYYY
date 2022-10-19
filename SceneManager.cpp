@@ -112,7 +112,8 @@ void SceneManager::update()
 			}
 		case SceneManager::kSceneKindClear:	// シーンがゲームクリアの場合、ゲーム終了
 			m_clear.end();	// シーンクリアのデータ削除
-			m_isGameEnd = true;
+			m_title.init();
+			m_kind = kSceneKindTitle;
 			break;
 		case SceneManager::kSceneKindNum:
 		default:

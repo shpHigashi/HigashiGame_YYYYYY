@@ -4,11 +4,16 @@
 
 namespace
 {
+	// タイトル表示までの遅延時間 (2秒)
+	constexpr int kTitleDelayMax = 120;
 }
 
 // 初期化
 void SceneClear::init()
 {
+	// 遅延時間初期化
+	titleDelay = kTitleDelayMax;
+	
 	m_isEnd = false;
 
 	// 画像の読み込み
@@ -29,10 +34,10 @@ void SceneClear::end()
 // 更新
 void SceneClear::update()
 {
-	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
-	
-	// キー入力があった場合シーン終了を true にする
-	if (padState & PAD_INPUT_1)
+	// 1フレームごとに残り遅延時間を減らす
+	titleDelay--;
+	// 0になったらシーン終了
+	if (!titleDelay)
 	{
 		m_isEnd = true;
 	}

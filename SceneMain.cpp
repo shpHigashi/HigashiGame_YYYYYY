@@ -7,7 +7,7 @@ namespace
 	// 敵出現用の遅延時間
 	constexpr int kSpawnDelay = 90;
 	// ゲームの制限時間
-	constexpr int kGameMaxTime = 900;	
+	constexpr int kGameMaxTime = 18000;	
 	// 死亡時の遅延
 	constexpr int kGameOverDelay = 90;
 	// ゲームオーバー
@@ -134,7 +134,7 @@ void SceneMain::update()
 	m_player.update();
 
 	// 当たり判定チェック処理
-	checkCollision();
+	//checkCollision();
 
 	// 敵の更新処理
 	for (auto& EnemyLeft : m_EnemyLeft)

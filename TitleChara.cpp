@@ -20,7 +20,7 @@ TitleChara::TitleChara()
     m_width = 0;
 
     m_isReverseLength = false;
-    m_isReverseSide = false;
+    m_isReverseSide = true;
 }
 
 // プレイヤーの初期化
@@ -86,22 +86,14 @@ void TitleChara::update()
 // プレイヤーの描画処理
 void TitleChara::draw()
 {
-    // 左右、上下の反転でそれぞれ描画する
-    if (m_isReverseSide && m_isReverseLength)
+    double angle = 0;
+    bool isReverseSide = m_isReverseSide;
+    if (m_isReverseLength)
     {
-        DrawRotaGraphF(m_pos.x + kPlayerDrawPosX, m_pos.y + kPlayerDrawPosY, 1.0, DX_PI, m_playerHandle, true, false);
+        angle = DX_PI;
+        if (isReverseSide) isReverseSide = false;
+        else isReverseSide = true;
     }
-    else if (m_isReverseLength)
-    {
-        DrawRotaGraphF(m_pos.x + kPlayerDrawPosX, m_pos.y + kPlayerDrawPosY, 1.0, DX_PI, m_playerHandle, true, true);
-    }
-    else if (m_isReverseSide)
-    {
-        DrawTurnGraphF(m_pos.x, m_pos.y, m_playerHandle, true);
-    }
-    else
-    {
-        DrawGraphF(m_pos.x, m_pos.y, m_playerHandle, true);
-    }
-    //DrawBox(getLeft(), getTop(), getRight(), getBottom(), GetColor(255, 255, 255), false);
+
+    DrawRotaGraphF(m_pos.x + kPlayerDrawPosX, m_pos.y + kPlayerDrawPosY, 1.0, angle, m_playerHandle, true, isReverseSide);
 }
