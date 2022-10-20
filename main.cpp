@@ -21,7 +21,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetDrawScreen(DX_SCREEN_BACK);
 
 	// ゲーム終了判定用の変数作成
-	int isGameEnd = false;
+	int isGameMusicEnd = false;
 
 	SceneManager scene;
 
@@ -47,9 +47,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		scene.draw();
 
 		// ゲーム終了判定
-		isGameEnd = scene.isGameEnd();
-		// isGameEndが真の場合ループ終了
-		if (isGameEnd)
+		isGameMusicEnd = scene.isGameMusicEnd();
+		// isGameEndが true の場合BGM停止
+		if (isGameMusicEnd)
 		{
 			StopSoundMem(backgroundSound);
 		}

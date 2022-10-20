@@ -31,8 +31,8 @@ public:
 	// •`‰æ
 	void draw();
 
-	// m_isGameEnd ‚ğæ“¾
-	bool isGameEnd() { return m_isMusicEnd; }
+	// m_isMusicEnd ‚ğæ“¾
+	bool isGameMusicEnd() { return m_isMusicEnd; }
 
 private:
 	// ƒQ[ƒ€I—¹
