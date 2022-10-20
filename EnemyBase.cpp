@@ -10,7 +10,7 @@ namespace
     constexpr float kSetPos = 0.0f;
     // “G‚ÌˆÚ“®‘¬“x‚Ì‰ºŒÀAãŒÀ
     constexpr int kSpeedLimitMax = 10;
-    constexpr int kSpeedLimitMin = 5;
+    constexpr int kSpeedLimitMin = 3;
 }
 
 EnemyBase::EnemyBase()

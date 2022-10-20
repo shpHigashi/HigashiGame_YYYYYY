@@ -5,7 +5,7 @@
 namespace
 {
 	// “GoŒ»—p‚Ì’x‰„ŠÔ
-	constexpr int kSpawnDelay = 90;
+	constexpr int kSpawnDelay = 100;
 	// ƒQ[ƒ€‚Ì§ŒÀŠÔ
 	constexpr int kGameMaxTime = 1200;	
 	// €–S‚Ì’x‰„
