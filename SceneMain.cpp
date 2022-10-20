@@ -17,6 +17,9 @@ namespace
 	// 制限時間表示位置
 	constexpr int kTimerPositionX = Game::kScreenWidthHalf - 30;
 	constexpr int kTimerPositionY = Game::kStageLowerLimit + 25;
+
+	// RGB初期値用
+	constexpr int kSetColor = 255;
 }
 
 SceneMain::SceneMain()
@@ -191,10 +194,22 @@ void SceneMain::draw()
 
 	// フォントサイズ設定
 	SetFontSize(Game::kFontSize);
+	
 	// ゲームの制限時間表示 (通常は白文字、合計時間の半分を過ぎると黄色文字、5秒を過ぎると赤文字で表示される)
-	if (m_gameTimeRemaining <= 300) DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 0, 0), "%d", m_gameTimeRemaining / 60);
-	else if (m_gameTimeRemaining <= kGameMaxTime / 2) DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 216, 0), "%d", m_gameTimeRemaining / 60);
-	else DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(255, 255, 255), "%d", m_gameTimeRemaining / 60);
+	int red = kSetColor;
+	int green = kSetColor;
+	int blue = kSetColor;
+	if (m_gameTimeRemaining <= 300)
+	{
+		green = 0;
+		blue = 0;
+	}
+	else if (m_gameTimeRemaining <= kGameMaxTime / 2)
+	{
+		green = 216;
+		blue = 0;
+	}
+	DrawFormatString(kTimerPositionX, kTimerPositionY, GetColor(red, green, blue), "%d", m_gameTimeRemaining / 60);
 
 	// プレイヤーの死亡判定が true の場合
 	if (m_player.isDead())
