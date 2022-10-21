@@ -92,7 +92,8 @@ void SceneMain::init()
 	m_gameTimeRemaining = kGameMaxTime;
 	m_GameOverDelay = kGameOverDelay;
 
-	// シーン終了を false に初期化
+	// シーン終了、ゲームクリアを false に初期化
+	m_isGameClear = false;
 	m_isEnd = false;
 }
 
